@@ -1,0 +1,5 @@
+Please see test project below:
+
+a.A program that gathers the pc name, manufacturer, list of users (which have logged to this system)
+b.Uploads this information every 30 minutes over to a .NET Web API
+c.Stores the information into a database and updates if an existing record is there.

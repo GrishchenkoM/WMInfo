@@ -1,18 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
+﻿using System.Web.Http;
+using System.Web.Http.Results;
+using Core;
+using Web.Models;
 
 namespace Web.Controllers
 {
     public class ValuesController : ApiController
     {
-        // GET api/values
-        public IEnumerable<string> Get()
+        private readonly DataManager _dataManager;
+        public ValuesController()
         {
-            return new string[] { "value1", "value2" };
+            _dataManager = new DataManager();
+        }
+        public ValuesController(DataManager dataManager)
+        {
+            _dataManager = dataManager;
+        }
+        
+        // GET api/values
+        public IHttpActionResult Get()
+        {
+            var model = new ViewModel(_dataManager).GetModel;
+            if (model.Users != null && model.Computer != null && model.Manufacturer != null)
+                return Ok(model);
+
+            return new InternalServerErrorResult(Request);
         }
 
         // GET api/values/5
