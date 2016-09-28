@@ -5,8 +5,10 @@ namespace Core
 {
     public class DbDataContext : DbContext
     {
-        public DbDataContext() : base("DbDataContext")
-        { }
+        // before adding dependency injection (Autofac)
+        //public DbDataContext() : base(ConfigurationManager.ConnectionStrings[1].ConnectionString) { }
+        public DbDataContext() : base("DefaultConnection") { }
+
         public DbSet<Computer> Computers { get; set; }
         public DbSet<Manufacturer> Manufacturers { get; set; }
         public DbSet<User> Users { get; set; }

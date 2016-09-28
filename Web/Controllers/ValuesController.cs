@@ -7,14 +7,14 @@ namespace Web.Controllers
 {
     public class ValuesController : ApiController
     {
-        private readonly DataManager _dataManager;
-        public ValuesController()
+        // before adding dependency injection (Autofac)
+        //public ValuesController()
+        //{
+        //    _dataManager = new DataManager();
+        //}
+        public ValuesController(IDataManager dataManager)
         {
-            _dataManager = new DataManager();
-        }
-        public ValuesController(DataManager dataManager)
-        {
-            _dataManager = dataManager;
+            _dataManager = dataManager as DataManager;
         }
         
         // GET api/values
@@ -47,5 +47,7 @@ namespace Web.Controllers
         public void Delete(int id)
         {
         }
+
+        private readonly DataManager _dataManager;
     }
 }

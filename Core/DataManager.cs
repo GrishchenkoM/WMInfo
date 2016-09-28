@@ -12,7 +12,7 @@ namespace Core
 
         public DataManager()
         {
-            
+            _context = new DbDataContext();
         }
 
         public DataManager(ComputerRepository computerRepository,

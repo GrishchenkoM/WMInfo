@@ -11,7 +11,6 @@ namespace Web.Models
         public ViewModel(DataManager manager)
         {
             _manager = manager;
-            //Manager.GetInstance().Manage();
             FillModel();
         }
 

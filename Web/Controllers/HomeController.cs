@@ -7,13 +7,14 @@ namespace Web.Controllers
 {
     public class HomeController : Controller
     {
-        public HomeController()
+        // before adding dependency injection (Autofac)
+        //public HomeController()
+        //{
+        //    Manager.CreateInstance(new DataManager(), new WmInfo());
+        //}
+        public HomeController(IDataManager dataManager)
         {
-            Manager.CreateInstance(new DataManager(), new WmInfo());
-        }
-        public HomeController(DataManager dataManager)
-        {
-            Manager.CreateInstance(dataManager, new WmInfo());
+            Manager.CreateInstance(dataManager as DataManager, new WmInfo());
         }
 
         public ActionResult Index()

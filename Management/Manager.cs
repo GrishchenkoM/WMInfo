@@ -49,12 +49,17 @@ namespace Management
         {
             try
             {
-                var userNames = _dataManager.Users.Get().ToList();
+                List<User> userNames = null;
+                try
+                {
+                    userNames = _dataManager.Users.Get().ToList();
+                }
+                catch { }
 
-                if (!userNames.Any())
-                    foreach (var name in model.Users)
+                if (userNames == null || userNames.Count == 0)
+                    foreach (var user in model.Users)
                     {
-                        _dataManager.Users.Create(name);
+                        _dataManager.Users.Create(user);
                     }
                 else
                 {
@@ -99,7 +104,6 @@ namespace Management
                         }
                     }
                 }
-                //_dataManager.Users.Save();
             }
             catch { }
         }
@@ -120,7 +124,6 @@ namespace Management
                         _dataManager.Manufacturers.Update(model.Manufacturer);
                     }
                 }
-                //_dataManager.Manufacturers.Save();
             }
             catch { }
         }
@@ -141,7 +144,6 @@ namespace Management
                         _dataManager.Computers.Update(model.Computer);
                     }
                 }
-                //_dataManager.Computers.Save();
             }
             catch { }
         }
