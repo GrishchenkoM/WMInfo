@@ -1,12 +1,20 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width"/>
+
+    <title>WMInfo Test Task</title>
+
+    <link href="@Url.Content("~/Content/oldSite.css")" rel="stylesheet" type="text/css" media="all" />
+    <link href="@Url.Content("~/Content/templatemo_style.css")" rel="stylesheet" type="text/css" media="all"/>
+    <link href="@Url.Content("~/Content/style-table.css")" rel="stylesheet" type="text/css" media="all"/>
+    <link href="@Url.Content("~/Content/style-slider.css")" rel="stylesheet" type="text/css" media="all"/>
+    <link href="@Url.Content("~/Content/style-about-dev.css")" rel="stylesheet" type="text/css" media="all"/>
+
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
 </head>
+
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -16,26 +24,51 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("WMInfo Test Task", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
                 </ul>
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+@RenderSection("scripts", false)
+
+<div id="templatemo_body_wrapper">
+    <div id="templatemo_wrapper">
+        <div id="templatemo_header">
+            <div id="site_title">
+                <a href="https://ua.linkedin.com/in/mykhailo-gryshchenko-252809aa" target="_parent">WMInfo
+                    <span>Test Task</span><br/>
+                    <span class="tagline">Developed by Gryshchenko M.V.</span>
+                </a>
+            </div> <!-- end of site_title -->
+
+            <div class="cleaner"></div>
+
+        </div> <!-- end of header -->
+
+        <div id="templatemo_main">
+            @RenderBody()
+        </div>
+
+    </div>
+    <div class="cleaner"></div>
+</div>
+
+<div id="templatemo_footer_wrapper">
+    <div id="templatemo_footer">
+
+        <div class="cleaner"></div>
+    </div>
+</div>
+
+<div id="templatemo_copyright">
+    Copyright © 2016 | Developed by <a href="https://ua.linkedin.com/in/mykhailo-gryshchenko-252809aa">Gryshchenko Mikhail</a> |
+    Used some parts of templates from <a href="http://www.templatemo.com" target="_parent">Free CSS Templates</a>
+</div>
+
 </body>
 </html>

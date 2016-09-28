@@ -15,7 +15,6 @@ namespace Web
             GlobalConfiguration.Configure(WebApiConfig.Register);
             
             AutofacConfig.ConfigureContainer();
-            //ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory());
 
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
