@@ -28,7 +28,9 @@
                 ul.append(li);
             }
         }
-        
+
+        // if server returns error it has 3 attempts to get info from server (needs when DB file is created)
+        var attempt = 3;
         $.ajax({
             url: '/api/values',
             type: 'GET',
@@ -37,12 +39,18 @@
 
                 console.log("GetInfo takes:");
                 console.log(data);
-
+                
                 if (data != null)
                     displayValues(data);
             },
-            error: function(x, y, z) {
-                alert(x + '\n' + y + '\n' + z);
+            error: function (x, y, z) {
+                GetInfo(); // returned data can be not full. It needs to refresh data again
+                if (attempt > 0) {
+                    GetInfo();
+                    --attempt;
+                } else {
+                    alert(x + '\n' + y + '\n' + z);
+                }
             }
         });
     }
